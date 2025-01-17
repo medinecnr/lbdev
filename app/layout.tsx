@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+// import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
@@ -38,28 +38,22 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          "min-h-screen bg-background font-sans antialiased"
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+          {/* Sayfa düzenini belirleyen kapsayıcı */}
+          <div className="flex flex-col min-h-screen">
+            {/* Navbar */}
             <Navbar />
-            {/* <main className="container mx-auto max-w-7xl  px-6 flex-grow"> */}
-              <main>
+
+            {/* Ana içerik */}
+            <main className="flex-grow">
               {children}
             </main>
+
+            {/* Footer */}
             <Footer />
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">2025 © Lastik Borsası. Tüm haklar saklıdır.</span>
-              </Link>
-            </footer>
           </div>
         </Providers>
       </body>
